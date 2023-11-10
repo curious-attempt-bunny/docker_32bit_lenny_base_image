@@ -1,0 +1,13 @@
+from debian:buster-slim as builder
+run apt-get -qq update && apt-get -q install --assume-yes debootstrap
+
+run debootstrap --arch i386 --variant=minbase lenny /work http://snapshot.debian.org/archive/debian/20070730T000000Z/
+
+run chroot /work apt-get -q clean
+
+from scratch
+copy --from=builder /work /
+
+run apt-get update && apt-get install -y --force-yes gcc-3.3
+
+cmd ["bash"]
