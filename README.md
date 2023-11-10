@@ -1,5 +1,7 @@
 # Overview
 
+You need a 32bit linux OS with gcc 3.3, and you want to build the base image locally.
+
 # Build
 
 ```
